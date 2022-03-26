@@ -1,0 +1,33 @@
+{
+  "name": "billstopay-api",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:igorclaudino/billstopay-api.git",
+  "author": "Igor Claudino de França Costa <igor.claudino.ic@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "dev:server": "tsnd --respawn --transpile-only --ignore-watch node_modules --no-notify src/main.ts",
+    "build": "tsc",
+    "test": "jest"
+  },
+  "devDependencies": {
+    "@types/jest": "^27.4.0",
+    "@types/yup": "^0.29.13",
+    "@typescript-eslint/eslint-plugin": "^5.12.0",
+    "@typescript-eslint/parser": "^5.12.0",
+    "eslint": "^7.32.0",
+    "eslint-config-standard": "^16.0.3",
+    "eslint-plugin-import": "^2.25.4",
+    "eslint-plugin-jest": "^26.1.1",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^5.2.0",
+    "jest": "^27.5.1",
+    "ts-jest": "^27.1.3",
+    "ts-node-dev": "^1.1.8",
+    "typescript": "^4.5.5"
+  },
+  "dependencies": {
+    "uuid": "^8.3.2",
+    "yup": "^0.32.11"
+  }
+}
