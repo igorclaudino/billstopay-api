@@ -1,14 +1,17 @@
-import { IUserRepository } from '@domain/aggregate/user/repositories/IUserRepository'
-import { User } from '@domain/aggregate/user/User'
+import { inject, injectable } from 'tsyringe'
+import { IUserRepository } from '../../../../core/entities/user/repositories/IUserRepository'
+import { User } from '../../../../core/entities/user/User'
 
 export type CreateUserRequest = {
   name: string,
   email: string,
   password: string
 }
-
+@injectable()
 export class CreateUserUseCase {
-  constructor (private readonly _userRepository: IUserRepository) {}
+  constructor (
+    @inject('UserRepository')
+    private readonly _userRepository: IUserRepository) {}
 
   async execute ({ name, email, password }: CreateUserRequest) {
     const userByEmail = await this._userRepository.findByEmail(email)

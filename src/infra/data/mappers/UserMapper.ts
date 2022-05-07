@@ -1,9 +1,9 @@
-import { User } from '@domain/aggregate/user/User'
-import { UserModel } from '../models/User'
+import { User } from '@core/entities/user/User'
+import { User as UserModel } from '@prisma/client'
 
 export class UserMapper {
-  static toModel ({ name, email, createdAt, password, updatedAt, getId }: User): UserModel {
-    return Object.assign(new UserModel(), { name, email, createdAt, password, updatedAt, id: getId() })
+  static toModel (user: User): UserModel {
+    return { name: user.name, email: user.email, createdAt: user.createdAt, password: user.password, updatedAt: user.updatedAt, id: user.getId() }
   }
 
   static async toDomain (user: UserModel): Promise<User> {

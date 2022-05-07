@@ -1,5 +1,4 @@
-import { Entity } from '@domain/seed-work/entity'
-import * as yup from 'yup'
+import { Entity } from '../../seed-work/entity'
 
 type UserProps = {
   name: string;
@@ -9,24 +8,13 @@ type UserProps = {
   updatedAt?: Date;
 }
 
-const UserSchema = yup.object({
-  name: yup.string().required(),
-  email: yup.string().email().required(),
-  password: yup.string().min(6).required()
-})
-
 export class User extends Entity<UserProps> {
   constructor (props: UserProps, id?: string) {
     super(props, id)
   }
 
   static async create (props: UserProps, id?: string) {
-    try {
-      await UserSchema.validate(props)
-    } catch (err) {
-      throw new Error(err)
-    }
-    return new User(props)
+    return new User(props, id)
   }
 
   public get name (): string {
